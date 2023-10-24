@@ -19,6 +19,11 @@ public class MainActivity extends AppCompatActivity {
         Button createDataBase = findViewById(R.id.create_database);
         Button addData = findViewById(R.id.add_data);
         Button updateData = findViewById(R.id.update_data);
+        Button deleteData = findViewById(R.id.delete_data);
+        deleteData.setOnClickListener(v -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            db.delete("Book", "price > ?", new String[]{"11"});
+        });
         updateData.setOnClickListener(v -> {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
