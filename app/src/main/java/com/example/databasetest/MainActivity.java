@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 1);
+        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 2);
         Button createDataBase = findViewById(R.id.create_database);
         createDataBase.setOnClickListener(v -> {
         dbHelper.getWritableDatabase();
