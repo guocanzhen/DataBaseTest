@@ -15,9 +15,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 3);
+        dbHelper = new MyDatabaseHelper(this, "BookStore.dp", null, 1);
         Button createDataBase = findViewById(R.id.create_database);
         Button addData = findViewById(R.id.add_data);
+        Button updateData = findViewById(R.id.update_data);
+        updateData.setOnClickListener(v -> {
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("price", 10.88);
+            db.update("Book", values, "name = ?", new String[]{"peace"});
+        });
         addData.setOnClickListener(v -> {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
             ContentValues values = new ContentValues();
